@@ -1,0 +1,17 @@
+application:
+  name: swift-crane-megacosm-generator
+  pods:
+    - name: app
+      image: "# filled by pipeline"
+      path: /
+      servicePorts:
+        - 8000
+      vars:
+        - key: PYTHONUNBUFFERED
+          value: "1"
+        - key: REDIS_URL
+          value: "redis://redis.pod:6379/0"
+    - name: redis
+      image: mirror.gcr.io/library/redis:7-alpine
+      servicePorts:
+        - 6379
